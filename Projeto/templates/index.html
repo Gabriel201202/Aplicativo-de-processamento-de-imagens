@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filtros de Imagem</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Aplicar Filtros em Imagens</h1>
+
+    <form action="/processar" method="POST">
+
+        <label>Tamanho do kernel:</label>
+        <input type="number" name="kernel" value="{{ kernel or 3 }}" min="1" step="2">
+
+        <br><br>
+
+        <button name="filtro" value="media">Filtro de Média</button>
+        <button name="filtro" value="gauss">Filtro Gaussiano</button>
+        <button name="filtro" value="mediana">Filtro de Mediana</button>
+        <button name="filtro" value="moda">Filtro de Moda</button>
+
+    </form>
+
+    {% if kernel %}
+    <p style="text-align:center;"><b>Kernel utilizado:</b> {{ kernel }}</p>
+    {% endif %}
+
+    <div class="img-section">
+        <h2>Imagem Original:</h2>
+        <img src="/static/pessoa.jpg">
+
+        <h2>Imagem Filtrada:</h2>
+        <img src="/static/output.jpg?{{ filtro }}{{ kernel }}">
+    </div>
+
+</div>
+
+</body>
+</html>
