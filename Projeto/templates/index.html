@@ -21,19 +21,22 @@
         <button name="filtro" value="gauss">Filtro Gaussiano</button>
         <button name="filtro" value="mediana">Filtro de Mediana</button>
         <button name="filtro" value="moda">Filtro de Moda</button>
+        <button name="filtro" value="sobel">Detecção de Bordas (Laplaciano)</button>
 
     </form>
 
     {% if kernel %}
-    <p style="text-align:center;"><b>Kernel utilizado:</b> {{ kernel }}</p>
+        <p style="text-align:center;"><b>Kernel utilizado:</b> {{ kernel }}</p>
     {% endif %}
 
     <div class="img-section">
+
         <h2>Imagem Original:</h2>
-        <img src="/static/pessoa.jpg">
+        <img src="/static/pessoa.jpg" width="350">
 
         <h2>Imagem Filtrada:</h2>
-        <img src="/static/output.jpg?{{ filtro }}{{ kernel }}">
+        <img src="/static/output.jpg?{{ filtro }}{{ kernel }}" width="350">
+
     </div>
 
 </div>
